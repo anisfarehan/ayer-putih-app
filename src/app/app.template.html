@@ -1,0 +1,93 @@
+
+<!-- logged out menu -->
+<ion-menu id="loggedOutMenu" [content]="content">
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="outer-content">
+
+     <ion-list>
+
+     <button ion-item menuClose (click)="openHome()">
+        <ion-icon item-left name="home"></ion-icon>
+        Menu Utama
+      </button>
+      <button ion-item menuClose (click)="openAkaun()">
+        <ion-icon item-left name="person"></ion-icon>
+        Maklumat Pelajar
+      </button>
+      <button ion-item menuClose (click)="openPrestasi()">
+        <ion-icon item-left name="home"></ion-icon>
+        Penilaian Akademik
+      </button>
+      <button ion-item menuClose (click)="openAktivit()">
+      <ion-icon item-left name="home"></ion-icon>
+      Aktiviti Sekolah
+    </button>
+      <button ion-item menuClose (click)="openDetailcikgu()">
+        <ion-icon item-left name="home"></ion-icon>
+        Senarai Guru
+      </button>
+      <button ion-item menuClose (click)="OpenTutorial()">
+        <ion-icon item-left name="home"></ion-icon>
+        Komen
+      </button>
+    </ion-list>
+
+
+  </ion-content>
+
+</ion-menu>
+
+<!-- logged in menu -->
+<ion-menu id="loggedInMenu" [content]="content">
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="outer-content">
+
+    <ion-list>
+      <ion-list-header>
+        Navigate
+      </ion-list-header>
+      <button ion-item menuClose *ngFor="let p of appPages" (click)="openPage(p)">
+        <ion-icon item-left [name]="p.icon" [color]="isActive(p)"></ion-icon>
+        {{p.title}}
+      </button>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        Akaun
+      </ion-list-header>
+      <button ion-item menuClose *ngFor="let p of loggedInPages" (click)="openPage(p)">
+        <ion-icon item-left [name]="p.icon" [color]="isActive(p)"></ion-icon>
+        {{p.title}}
+      </button>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        Keluar
+      </ion-list-header>
+      <button ion-button icon-only (click)="logout()">
+        <ion-icon item-left name="exit"></ion-icon>
+          Keluar
+      </button>
+    </ion-list>
+
+  </ion-content>
+
+</ion-menu>
+
+
+<!-- main navigation -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

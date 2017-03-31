@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "642527413379",
+    "firebase_url": "https://real-time-walm-6a976.firebaseio.com",
+    "project_id": "real-time-walm-6a976",
+    "storage_bucket": "real-time-walm-6a976.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642527413379:android:c26359365d6cbc89",
+        "android_client_info": {
+          "package_name": "tech.cryptical.walm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "642527413379-2ok8b95th9698trjtcn6ed4tkttk9ahu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxl7JJyRyQfuTsiUrHgkPK11EtBj_aLLc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,25 @@
+<ion-header >
+  <ion-navbar>
+    <ion-title>
+      S.k.Ayer Puteh
+    </ion-title>
+    <ion-buttons>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h3>Pelajar : {{ user.details.name }}       Kelas : 1D</h3>
+</ion-content>
+
+
+
