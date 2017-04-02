@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { Auth, User, UserDetails, IDetailedError } from '@ionic/cloud-angular';
 import { HomePage } from '../home/home';
+import { AuthService } from '../../providers/auth-service';
 
 @Component({
   selector: 'page-login',
@@ -10,11 +11,11 @@ import { HomePage } from '../home/home';
 export class LoginPage {
 
   showLogin:boolean = true;
-  email:string = '';
+  number_ic:string = '';
   password:string = '';
   name:string = '';
 
-  constructor(public navCtrl: NavController, public auth:Auth, public user: User, public alertCtrl: AlertController, public loadingCtrl:LoadingController) {}
+  constructor(public navCtrl: NavController, public auth:AuthService, public user: User, public alertCtrl: AlertController, public loadingCtrl:LoadingController) {}
 
   ionViewDidLoad() {
     console.log('Hello LoginPage Page');
@@ -28,7 +29,7 @@ export class LoginPage {
     if(this.showLogin) {
       console.log('process login');
 
-      if(this.email === '' || this.password === '') {
+      if(this.number_ic === '' || this.password === '') {
         let alert = this.alertCtrl.create({
           title:'Register Error',
           subTitle:'All fields are rquired',
@@ -43,11 +44,11 @@ export class LoginPage {
       });
       loader.present();
 
-      this.auth.login('basic', {'email':this.email, 'password':this.password}).then(() => {
+      this.auth.login({'number_ic':this.number_ic, 'password':this.password}).subscribe(() => {
         console.log('ok i guess?');
         loader.dismissAll();
         this.navCtrl.setRoot(HomePage);
-      }, (err) => {
+      }, (err:any) => {
         loader.dismissAll();
         console.log(err.message);
 
@@ -67,13 +68,13 @@ export class LoginPage {
     }
   }
     doRegister() {
-        if(!this.showLogin) {
+        /*if(!this.showLogin) {
             console.log('process register');
 
-            /*
+            /!*
              do our own initial validation
-             */
-            if(this.name === '' || this.email === '' || this.password === '') {
+             *!/
+            if(this.name === '' || this.number_ic === '' || this.password === '') {
                 let alert = this.alertCtrl.create({
                     title:'Register Error',
                     subTitle:'All fields are rquired',
@@ -83,7 +84,7 @@ export class LoginPage {
                 return;
             }
 
-            let details: UserDetails = {'email':this.email, 'password':this.password, 'name':this.name};
+            let details: UserDetails = {'number_ic':this.number_ic, 'password':this.password, 'name':this.name};
             console.log(details);
 
             let loader = this.loadingCtrl.create({
@@ -93,7 +94,7 @@ export class LoginPage {
 
             this.auth.signup(details).then(() => {
                 console.log('ok signup');
-                this.auth.login('basic', {'email':details.email, 'password':details.password}).then(() => {
+                this.auth.login('basic', {'number_ic':details.number_ic, 'password':details.password}).then(() => {
                     loader.dismissAll();
                     this.navCtrl.setRoot(HomePage);
                 });
@@ -119,7 +120,7 @@ export class LoginPage {
 
         } else {
             this.showLogin = false;
-        }
+        }*/
     }
 
 
