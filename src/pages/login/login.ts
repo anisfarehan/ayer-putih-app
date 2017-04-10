@@ -40,7 +40,7 @@ export class LoginPage {
       }
 
       let loader = this.loadingCtrl.create({
-        content: "Logging in..."
+        content: "Sedang Prosess..."
       });
       loader.present();
 
@@ -53,8 +53,8 @@ export class LoginPage {
         console.log(err.message);
 
         let errors = '';
-        if(err.message === 'UNPROCESSABLE ENTITY') errors += 'Email isn\'t valid.<br/>';
-        if(err.message === 'UNAUTHORIZED') errors += 'Password is required.<br/>';
+        if(err.message === 'UNPROCESSABLE ENTITY') errors += 'Nombor kad pengenalan salah.<br/>';
+        if(err.message === 'UNAUTHORIZED') errors += 'Kata Laluan tidak tepat.<br/>';
 
         let alert = this.alertCtrl.create({
           title:'Login Error',
@@ -68,7 +68,7 @@ export class LoginPage {
     }
   }
     doRegister() {
-        /*if(!this.showLogin) {
+       /* if(!this.showLogin) {
             console.log('process register');
 
             /!*
