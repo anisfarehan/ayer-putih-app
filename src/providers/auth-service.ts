@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import {Http, RequestMethod, Headers, RequestOptions, Request} from '@angular/http';
 import {Storage} from '@ionic/storage';
 import {Observable} from 'rxjs/Observable';
 import {UserData} from './user-data';
@@ -24,7 +24,17 @@ export class AuthService {
                     password: credentials.password.trim()
                 });
 
-                this.http.post("http://localhost:8484/Psm/DataServlet", postData)
+                var headers = new Headers();
+                headers.append("Content-Type", 'application/json');
+                var requestoptions = new RequestOptions({
+                    method: RequestMethod.Post,
+                    url: "http://localhost:8484/Psm/LoginServlet",
+                    headers: headers,
+                    body: JSON.stringify(postData)
+                })
+
+                // this.http.post("http://localhost:8484/Psm/LoginServlet", postData)
+                return this.http.request(new Request(requestoptions))
                     .subscribe((responseData:any) => {
                         var userData = responseData.json();
 
