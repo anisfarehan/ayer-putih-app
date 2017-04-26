@@ -31,34 +31,30 @@ export class AuthService {
                     url: "http://localhost:8484/Psm/LoginServlet",
                     headers: headers,
                     body: JSON.stringify(postData)
-                })
+                });
 
                 // this.http.post("http://localhost:8484/Psm/LoginServlet", postData)
                 return this.http.request(new Request(requestoptions))
                     .subscribe((responseData:any) => {
-                        var userData = responseData.json();
+                        console.log(responseData.json());
 
-                        //set the current user data from backend
-                        this.userData.setUserData(userData);
-                        console.log(userData);
+                        if (responseData.json().responseStatus) {
+                            observer.next(false);
+                            observer.complete();
+                        } else {
+                            setTimeout(()=> {
+                                var userData = responseData.json();
+                                //set the current user data from backend
+                                this.userData.setUserData(userData);
 
-                        /*//set the current user session id from backend
-                         this.globalService.setStorage('session_id', userData.session_id);
-                         this.globalService.getStorage('session_id').then((session_id)=> {
-                         console.log(session_id);
-                         });
-                         //set the current user csrf token from backend
-                         this.globalService.setStorage('csrf_token', userData.csrf_token);
-                         this.globalService.getStorage('csrf_token').then((csrf_token)=> {
-                         console.log(csrf_token);
-                         });*/
+                                console.log(userData);
+                                var isValid:boolean = (credentials.number_ic === userData.number_ic);
+                                this.userData.events.publish('user:login');
 
-                        var isValid:boolean = (credentials.number_ic === userData.number_ic);
-                        this.userData.events.publish('user:login');
-
-                        observer.next(isValid);
-                        observer.complete();
-
+                                observer.next(true);
+                                observer.complete();
+                            });
+                        }
                     }, (error:any) => {
                         console.log(error);
                     });

@@ -1,2 +1,2 @@
-git pull origin master
+git pull origin v2
 read -n1 -r -p "Press any key to continue..." key
