@@ -12,12 +12,10 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public user:User, public auth:Auth) {
     console.log(user);
-
   }
 
   logout() {
     this.auth.logout();
     this.navCtrl.setRoot(LoginPage);
   }
-
 }

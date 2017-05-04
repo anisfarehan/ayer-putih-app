@@ -90,7 +90,7 @@ export class UserData {
 
     getNama() {
         return this.storage.get(this.USER_DATA).then((data)=> {
-            return data.nama;
+            return data.name;
         });
     };
 

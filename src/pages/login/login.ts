@@ -18,8 +18,8 @@ export class LoginPage {
     name:string = '';
 
     constructor(public globalService:GlobalService, public userData:UserData, public navCtrl:NavController, public auth:AuthService, public user:User, public alertCtrl:AlertController, public loadingCtrl:LoadingController) {
-        this.number_ic = "930317035924";
-        this.password = "anis";
+        this.number_ic = "";
+        this.password = "";
     }
 
     ionViewDidLoad() {
@@ -54,7 +54,7 @@ export class LoginPage {
                 if (isValid) {
                     this.userData.getUserData().then((data:any)=> {
                         console.log(data);
-                        this.globalService.alert("Berjaya", "Selamat Datang" + data.nama + "!").present();
+                        this.globalService.alert("Berjaya", "Selamat Datang" + data.name + "!").present();
                         this.navCtrl.setRoot(HomePage);
                     });
                 } else {
