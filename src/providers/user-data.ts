@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import {Http, Headers, RequestMethod, RequestOptions, Request} from '@angular/http';
 import {Events} from 'ionic-angular';
 import {Storage} from '@ionic/storage';
 import {Observable} from 'rxjs/Observable';
@@ -88,6 +88,12 @@ export class UserData {
         });
     };
 
+    getID() {
+        return this.storage.get(this.USER_DATA).then((data)=> {
+            return data.id;
+        });
+    };
+
     getNama() {
         return this.storage.get(this.USER_DATA).then((data)=> {
             return data.name;
@@ -118,5 +124,54 @@ export class UserData {
             return data;
         })
     };
+
+    profileUpdate(user:any) {
+        return Observable.create((observer:any) => {
+
+            this.getID().then((userId:any)=> {
+
+                var postData = ({
+                    user_id: userId,
+                    pelajarnama: user.studentName,
+                    kelas_id: user.kelas,
+                    no_ic: user.nric,
+                    namaibu: user.motherName,
+                    namabapa: user.fathername,
+                    agama: user.agama,
+                    warganegara: user.warganegara,
+                    alamat: user.alamat,
+                });
+
+                var headers = new Headers();
+                headers.append("Content-Type", 'application/json');
+                var requestoptions = new RequestOptions({
+                    method: RequestMethod.Post,
+                    url: this.globalService.backend.profileUpdateUrl,
+                    headers: headers,
+                    body: JSON.stringify(postData)
+                });
+
+                return this.http.request(new Request(requestoptions))
+                    .subscribe((responseData:any) => {
+                        console.log(responseData.json());
+
+                        if (responseData.json().responseStatus) {
+                            observer.next(false);
+                            observer.complete();
+                        } else {
+                            setTimeout(()=> {
+                                var userData = responseData.json();
+
+                                observer.next(true);
+                                observer.complete();
+                            });
+                        }
+                    }, (error:any) => {
+                        console.log(error);
+                    });
+            });
+
+        });
+    }
 
 }

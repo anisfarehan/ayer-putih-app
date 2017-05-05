@@ -17,7 +17,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<!--<ion-content padding>
   <ion-item>
     <ion-label>Nama Pelajar :</ion-label>
     <ion-label>Anis Farehan Binti Muhammad Fakihi</ion-label>
@@ -59,7 +59,107 @@
     <ion-label>Alamat :</ion-label>
     <ion-label>Lot kelantan</ion-label>
   </ion-item>
+</ion-content>-->
+
+
+
+
+
+
+<ion-content>
+    <div class="logo">
+        <img [src]="avatar" alt="Avatar">
+        <h2 color=light>@{{username}}</h2>
+    </div>
+
+    <form #updateForm="ngForm" novalidate>
+        <ion-input [(ngModel)]="user.id" name="id" type="hidden" #id="ngModel" spellcheck="false"
+                   autocapitalize="off"></ion-input>
+
+        <ion-list no-lines>
+            <ion-item>
+                <ion-label stacked color="primary">Nama Pelajar</ion-label>
+                <ion-input [(ngModel)]="user.studentName" name="studentName" type="text" #studentName="ngModel" spellcheck="false"
+                           autocapitalize="off" required></ion-input>
+            </ion-item>
+            <p ion-text [hidden]="studentName.valid || submitted == false" color="danger" padding-left>
+                Full name is required
+            </p>
+
+            <ion-item>
+                <ion-label stacked color="primary">Kelas</ion-label>
+                <ion-input [(ngModel)]="user.kelas" name="class" type="text" #kelas="ngModel" spellcheck="false"
+                           autocapitalize="off" required></ion-input>
+            </ion-item>
+            <p ion-text [hidden]="kelas.valid || submitted == false" color="danger" padding-left>
+               Class is required
+            </p>
+
+            <ion-item>
+                <ion-label stacked color="primary">No.Kad Pengenalan</ion-label>
+                <ion-input [(ngModel)]="user.nric" name="nric" type="text" #nric="ngModel" spellcheck="false"
+                           autocapitalize="off" required></ion-input>
+            </ion-item>
+            <p ion-text [hidden]="nric.valid || submitted == false" color="danger" padding-left>
+                NRIC is required
+            </p>
+
+            <ion-item>
+                <ion-label stacked color="primary">Nama Ibu</ion-label>
+                <ion-input [(ngModel)]="user.motherName" name="motherName" type="text" #motherName="ngModel" spellcheck="false"
+                           autocapitalize="off" required></ion-input>
+            </ion-item>
+            <p ion-text [hidden]="motherName.valid || submitted == false" color="danger" padding-left>
+                Mother Name is required
+            </p>
+
+            <ion-item>
+                <ion-label stacked color="primary">Nama Bapa</ion-label>
+                <ion-input [(ngModel)]="user.fathername" name="fathername" type="text" #fathername="ngModel" spellcheck="false"
+                           autocapitalize="off" required></ion-input>
+            </ion-item>
+            <p ion-text [hidden]="fathername.valid || submitted == false" color="danger" padding-left>
+                Father Name is required
+            </p>
+
+
+            <ion-item>
+                <ion-label stacked color="primary">Agama</ion-label>
+                <ion-input [(ngModel)]="user.agama" name="agama" type="text" #agama="ngModel" spellcheck="false"
+                           autocapitalize="off" required></ion-input>
+            </ion-item>
+            <p ion-text [hidden]="agama.valid || submitted == false" color="danger" padding-left>
+                Agama is required
+            </p>
+            <ion-item>
+                <ion-label stacked color="primary">Warganegara</ion-label>
+                <ion-input [(ngModel)]="user.warganegara" name="warganegara" type="text" #warganegara="ngModel" spellcheck="false"
+                           autocapitalize="off" required></ion-input>
+            </ion-item>
+            <p ion-text [hidden]="warganegara.valid || submitted == false" color="danger" padding-left>
+                Agama is required
+            </p>
+
+            <ion-item>
+                <ion-label stacked color="primary">Alamat</ion-label>
+                <ion-input [(ngModel)]="user.alamat" name="alamat" type="text" #alamat="ngModel" spellcheck="false"
+                           autocapitalize="off" required></ion-input>
+            </ion-item>
+            <p ion-text [hidden]="alamat.valid || submitted == false" color="danger" padding-left>
+                Alamat is required
+            </p>
+
+        </ion-list>
+
+        <ion-row responsive-sm>
+            <ion-col>
+                <button ion-button (click)="onUpdate()" color="primary" block>Update</button>
+            </ion-col>
+        </ion-row>
+    </form>
 </ion-content>
+
+<!--
 <ion-footer>
   <ion-toolbar>
     <ion-buttons end>
@@ -69,4 +169,4 @@
       </button>
     </ion-buttons>
   </ion-toolbar>
-</ion-footer>
+</ion-footer>-->

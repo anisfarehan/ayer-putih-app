@@ -10,9 +10,10 @@ export class GlobalService {
   datePipeMy:DatePipe = new DatePipe('en-US');
   backend:any = {
     protocol: "http://",
-    baseUrl: "localhost:8000", //mexists:8238Gt@walm.cryptical.tech
+    baseUrl: "localhost:8484/Psm", //mexists:8238Gt@walm.cryptical.tech
     loginUrl: "/json/login",
-    getCurrentUserUrl: '/json/getCurrentUser'
+    getCurrentUserUrl: '/json/getCurrentUser',
+    profileUpdateUrl: '/AppakaunServlet',
   };
 
   constructor(public storage:Storage, public http:Http, private alertCtrl:AlertController,
@@ -20,6 +21,7 @@ export class GlobalService {
     this.backend.baseUrl = this.backend.protocol + this.backend.baseUrl;
     this.backend.loginUrl = this.backend.baseUrl + this.backend.loginUrl;
     this.backend.getCurrentUserUrl = this.backend.baseUrl + this.backend.getCurrentUserUrl;
+    this.backend.profileUpdateUrl = this.backend.baseUrl + this.backend.profileUpdateUrl;
   }
 
   getStorage(key:string) {
