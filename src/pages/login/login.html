@@ -1,7 +1,20 @@
 <ion-header >
-
+<!--  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Send To...</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="person-add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>-->
   <ion-navbar color="farehan">
-    <ion-title>Sk. Ayer Puteh</ion-title>
+    <ion-title>        Sk. Ayer Puteh</ion-title>
+
   </ion-navbar>
 
 </ion-header>
@@ -9,32 +22,29 @@
 
 <ion-content padding>
 
+  <ion-list>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="assets/img/Picture1.gif">
+      </ion-avatar>
+      <h2>Sekolah Kebangsaan Ayer Puteh</h2>
+    </ion-item>
+  </ion-list>
   <div *ngIf="showLogin">
     <ion-item>
+      <ion-label floating>Kad Pengenalan</ion-label>
       <ion-input type="text" placeholder="No. Kad Pengenalan" [(ngModel)]="number_ic"></ion-input>
     </ion-item>
 
     <ion-item>
+      <ion-label floating>Kata Laluan</ion-label>
       <ion-input type="password" placeholder="Kata Laluan" [(ngModel)]="password"></ion-input>
     </ion-item>
   </div>
-  <div *ngIf="!showLogin">
-
-    <ion-item>
-      <ion-input type="text" placeholder="Name" [(ngModel)]="name"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input type="email" placeholder="Email" [(ngModel)]="email"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
-    </ion-item>
-  </div>
 
 
-  <button ion-button color="farehan" full (click)="doLogin()">Login</button>
+
+  <button ion-item color="farehan" full (click)="doLogin()">Login</button>
 
 
 
