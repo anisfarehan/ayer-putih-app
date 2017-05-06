@@ -13,45 +13,49 @@ import {UserData} from "../../providers/user-data";
  Ionic pages and navigation.
  */
 @Component({
-    selector: 'page-akaun',
-    templateUrl: 'akaun.html'
+  selector: 'page-akaun',
+  templateUrl: 'akaun.html'
 })
 export class AkaunPage {
-    username:any;
-    user:{id?:number, studentName?:string, kelas?:string, nric?:string,
-        motherName?:string, fathername?:string, agama?:string, warganegara?:string,alamat?:string} = {};
+  username:any;
+  user:{id?:number, studentName?:string, kelas?:string, nric?:string,
+    motherName?:string, fathername?:string, agama?:string, warganegara?:string,alamat?:string} = {};
 
-    constructor(public navCtrl:NavController, public userData:UserData, public globalService:GlobalService, public navParams:NavParams) {
-    }
+  constructor(public navCtrl:NavController, public userData:UserData, public globalService:GlobalService, public navParams:NavParams) {
+  }
 
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad AkaunPage');
-        this.user.id = 1;
-        this.user.studentName = "Ali Baba";
-        this.user.kelas = "Bijak";
-        this.user.nric = "943591845581";
-        this.user.motherName = "Minah Rempit";
-        this.user.fathername = "Mat Rempit";
-        this.user.agama = "Kafir";
-        this.user.warganegara = "Najib";
-        this.user.alamat = "No.23 Jln Mati";
-    }
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad AkaunPage');
+    this.user.id = 1;
+    this.user.studentName = "Ali Baba";
+    this.user.kelas = "Bijak";
 
-    onUpdate() {
-        let loading = this.globalService.loading("Processing");
-        loading.present();
+    this.userData.getNRIC().then((data:any)=> {
+      this.user.nric = data;
+    });
 
-        this.userData.profileUpdate(this.user).subscribe((data:any)=> {
-            this.globalService.toast("Profile updated!").present();
-            this.userData.refreshUserData().subscribe((data:any)=> {
+    this.user.motherName = "Mak";
+    this.user.fathername = "Abah";
+    this.user.agama = "Islam";
+    this.user.warganegara = "Malaysia";
+    this.user.alamat = "No.23 Jln Tutup";
+  }
 
-            });
-        }, (error:any)=> {
-            console.log(error);
-            this.globalService.toast("Opss! Something went wrong.").present();
-        });
+  onUpdate() {
+    let loading = this.globalService.loading("Processing");
+    loading.present();
 
-        loading.dismiss();
-    }
+    this.userData.profileUpdate(this.user).subscribe((data:any)=> {
+      this.globalService.toast("Profile updated!").present();
+      this.userData.refreshUserData().subscribe((data:any)=> {
+
+      });
+    }, (error:any)=> {
+      console.log(error);
+      this.globalService.toast("Opss! Something went wrong.").present();
+    });
+
+    loading.dismiss();
+  }
 
 }

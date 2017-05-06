@@ -79,7 +79,7 @@ export class UserData {
     }
 
     setUserData(data:any) {
-        this.storage.set(this.USER_DATA, data);
+        return this.storage.set(this.USER_DATA, data);
     }
 
     getUserData() {
@@ -97,6 +97,12 @@ export class UserData {
     getNama() {
         return this.storage.get(this.USER_DATA).then((data)=> {
             return data.name;
+        });
+    };
+
+    getNRIC() {
+        return this.storage.get(this.USER_DATA).then((data)=> {
+            return data.number_ic;
         });
     };
 
