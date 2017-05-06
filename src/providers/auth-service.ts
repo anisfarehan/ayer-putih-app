@@ -24,16 +24,7 @@ export class AuthService {
           password: credentials.password.trim()
         });
 
-<<<<<<< HEAD
-                var headers = new Headers();
-                headers.append("Content-Type", 'application/json');
-                var requestoptions = new RequestOptions({
-                    method: RequestMethod.Post,
-                    url: "https://91d8ccb3.ngrok.io/Psm/LoginServlet",
-                    headers: headers,
-                    body: JSON.stringify(postData)
-                });
-=======
+
         var headers = new Headers();
         headers.append("Content-Type", 'application/json');
         var requestoptions = new RequestOptions({
@@ -42,7 +33,6 @@ export class AuthService {
           headers: headers,
           body: JSON.stringify(postData)
         });
->>>>>>> 968542028e0d879184fb82dcfcd29be5ff21739c
 
         // this.http.post("http://localhost:8484/Psm/LoginServlet", postData)
         return this.http.request(new Request(requestoptions))
