@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-
+import {UserData} from "../../providers/user-data";
+import {NavController, NavParams} from 'ionic-angular';
+import {GlobalService} from "../../providers/global-service";
+import { Auth, User } from '@ionic/cloud-angular';
+import { LoginPage } from '../login/login';
 /*
   Generated class for the Prestasi page.
 
@@ -13,10 +16,32 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class PrestasiPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PrestasiPage');
+  username:any;
+  user:{id?:number, studentName?:string, kelas?:string, nric?:string,
+    motherName?:string, fathername?:string, agama?:string, warganegara?:string,alamat?:string} = {};
+    user1:{id?:number, subjek?:number, total?:string, noic?:string} = {};
+
+  constructor(public navCtrl: NavController,public userData:UserData,public globalService:GlobalService,public navParams:NavParams, public auth:Auth) {
+
+    userData.getNRIC().then((data:any)=> {
+      this.user.nric = data;
+
+      userData.getPelajar(this.user.nric).subscribe((data:any)=> {
+        console.log(data);
+        this.user.studentName = data.pelajarnama;
+        this.user.kelas = data.kelas_id;
+
+
+      });
+    });
+
+
+  }
+
+  logout() {
+    this.auth.logout();
+    this.navCtrl.setRoot(LoginPage);
   }
 
 }

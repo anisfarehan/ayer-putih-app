@@ -1,6 +1,6 @@
-import {NgModule} from '@angular/core';
+import {NgModule, Component} from '@angular/core';
 
-import {IonicApp, IonicModule} from 'ionic-angular';
+import {IonicApp, IonicModule, NavController, NavParams} from 'ionic-angular';
 import {Storage} from '@ionic/storage';
 import {AkaunPage} from '../pages/akaun/akaun';
 import {LoginPage} from '../pages/login/login';
@@ -12,7 +12,7 @@ import {AuthService} from '../providers/auth-service';
 import {ChannelData} from '../providers/channel-data';
 import {UserData} from '../providers/user-data';
 
-import {CloudSettings, CloudModule} from '@ionic/cloud-angular';
+import {CloudSettings, CloudModule, Auth} from '@ionic/cloud-angular';
 import {ContactPage} from "../pages/contact/contact";
 import {HomePage} from '../pages/home/home';
 import {PrestasiPage} from "../pages/prestasi/prestasi";
@@ -114,6 +114,6 @@ const cloudSettings:CloudSettings = {
   ],
   providers: [GlobalService, AuthService, ChannelData, UserData, Storage]
 })
-
 export class AppModule {
+
 }

@@ -5,6 +5,7 @@ import {HomePage} from '../home/home';
 import {AuthService} from '../../providers/auth-service';
 import {GlobalService} from '../../providers/global-service';
 import {UserData} from "../../providers/user-data";
+import {TabsPage} from "../tabs/tabs";
 
 @Component({
     selector: 'page-login',
@@ -55,7 +56,7 @@ export class LoginPage {
                     this.userData.getUserData().then((data:any)=> {
                         console.log(data);
                         this.globalService.alert("Berjaya", "Selamat Datang " + data.number_ic + "!").present();
-                        this.navCtrl.setRoot(HomePage);
+                        this.navCtrl.setRoot(TabsPage);
                     });
                 } else {
                     this.globalService.alert("Gagal", "Salah Kad Pengenalan/kata laluan!").present();

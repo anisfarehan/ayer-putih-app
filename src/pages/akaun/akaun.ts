@@ -2,8 +2,6 @@ import {NgForm} from '@angular/forms';
 import {NavController, NavParams} from 'ionic-angular';
 import {Component, ViewChild, ElementRef} from '@angular/core';
 import {GlobalService} from "../../providers/global-service";
-import {ChannelData} from '../../providers/channel-data';
-
 import {Platform} from 'ionic-angular';
 import {UserData} from "../../providers/user-data";
 /*
@@ -13,49 +11,50 @@ import {UserData} from "../../providers/user-data";
  Ionic pages and navigation.
  */
 @Component({
-  selector: 'page-akaun',
-  templateUrl: 'akaun.html'
+    selector: 'page-akaun',
+    templateUrl: 'akaun.html'
 })
 export class AkaunPage {
-  username:any;
-  user:{id?:number, studentName?:string, kelas?:string, nric?:string,
-    motherName?:string, fathername?:string, agama?:string, warganegara?:string,alamat?:string} = {};
+    username:any;
+    user:{id?:number, studentName?:string, kelas?:string, nric?:string,
+        motherName?:string, fathername?:string, agama?:string, warganegara?:string,alamat?:string} = {};
 
-  constructor(public navCtrl:NavController, public userData:UserData, public globalService:GlobalService, public navParams:NavParams) {
-  }
+    constructor(public navCtrl:NavController, public userData:UserData, public globalService:GlobalService, public navParams:NavParams) {
+        userData.getNRIC().then((data:any)=> {
+            this.user.nric = data;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AkaunPage');
-    this.user.id = 1;
-    this.user.studentName = "Ali Baba";
-    this.user.kelas = "Bijak";
+            userData.getPelajar(this.user.nric).subscribe((data:any)=> {
+                console.log(data);
+                this.user.studentName = data.pelajarnama;
+                this.user.kelas = data.kelas_id;
+                this.user.motherName = data.namaibu;
+                this.user.fathername = data.namabapa;
+                this.user.agama = data.agama;
+                this.user.warganegara = data.warganegara;
+                this.user.alamat = data.alamat;
+            });
+        });
+    }
 
-    this.userData.getNRIC().then((data:any)=> {
-      this.user.nric = data;
-    });
+    ionViewDidLoad() {
 
-    this.user.motherName = "Mak";
-    this.user.fathername = "Abah";
-    this.user.agama = "Islam";
-    this.user.warganegara = "Malaysia";
-    this.user.alamat = "No.23 Jln Tutup";
-  }
+    }
 
-  onUpdate() {
-    let loading = this.globalService.loading("Processing");
-    loading.present();
+    onUpdate() {
+        let loading = this.globalService.loading("Processing");
+        loading.present();
 
-    this.userData.profileUpdate(this.user).subscribe((data:any)=> {
-      this.globalService.toast("Profile updated!").present();
-      this.userData.refreshUserData().subscribe((data:any)=> {
+        this.userData.profileUpdate(this.user).subscribe((data:any)=> {
+            this.globalService.toast("Profile updated!").present();
+            this.userData.refreshUserData().subscribe((data:any)=> {
 
-      });
-    }, (error:any)=> {
-      console.log(error);
-      this.globalService.toast("Opss! Something went wrong.").present();
-    });
+            });
+        }, (error:any)=> {
+            console.log(error);
+            this.globalService.toast("Opss! Something went wrong.").present();
+        });
 
-    loading.dismiss();
-  }
+        loading.dismiss();
+    }
 
 }

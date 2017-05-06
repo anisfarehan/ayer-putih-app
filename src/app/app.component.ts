@@ -39,12 +39,15 @@ export class MyApp {
 
       if(this.auth.isAuthenticated()) {
         this.rootPage = HomePage;
+        this.rootPage = AkaunPage;
       } else {
         this.rootPage = LoginPage;
       }
 
     });
     }
+
+
   openAkaun() {
     this.nav.setRoot(AkaunPage);
   }

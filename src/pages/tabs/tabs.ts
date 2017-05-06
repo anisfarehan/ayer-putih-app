@@ -15,9 +15,9 @@ import {DetailcikguPage} from "../detailcikgu/detailcikgu";
 export class TabsPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
-  tab1Root = HomePage;
-  tab2Root = AkaunPage;
-  tab3Root = DetailcikguPage;
+  tab1Root: any = HomePage;
+  tab2Root: any = AkaunPage;
+  tab3Root: any = DetailcikguPage;
 
   constructor() {
 

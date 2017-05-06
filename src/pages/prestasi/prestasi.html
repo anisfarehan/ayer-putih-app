@@ -7,7 +7,7 @@
 <ion-header >
   <ion-navbar color="vimeo">
     <ion-title>
-      S.k.Ayer Puteh
+      {{user.studentName}}
     </ion-title>
     <ion-buttons>
       <button ion-button menuToggle>
@@ -24,30 +24,26 @@
 
 
 <ion-content padding>
-  <ion-item-group>
-    <ion-item-divider color="light">A</ion-item-divider>
-    <ion-item>Angola</ion-item>
-    <ion-item>Argentina</ion-item>
-  </ion-item-group>
-
   <ion-list>
     <ion-item>
-      <ion-icon name="leaf" item-left></ion-icon>
-      Herbology
-      <ion-icon name="rose" item-right></ion-icon>
-    </ion-item>
-  </ion-list>
-
-  <ion-list>
-    <ion-item>
-      <ion-avatar item-left>
-        <img src="img/avatar-finn.png">
+      <ion-avatar item-right>
+        <img src="assets/img/Picture1.gif">
       </ion-avatar>
-      <h2>Finn</h2>
-      <h3>Don't Know What To Do!</h3>
-      <p>I've had a pretty messed up day. If we just...</p>
+      <h2>{{user.studentName}}</h2>
+      <h3>{{user.kelas}}</h3>
+      <p>{{user.nric}}</p>
     </ion-item>
   </ion-list>
+  <form #updateForm="ngForm" novalidate>
+  <ion-item-group>
+    <ion-item-divider color="light">Keputusan</ion-item-divider>
+    <ion-item>Bahasa Inggeris      90 A</ion-item>
+    <ion-item>Bahasa Melayu        88 A</ion-item>
+    <ion-item>Matematik            78 B</ion-item>
+    <ion-item>Science              90 A</ion-item>
+    <ion-item>Pendidikan Islam     90 A</ion-item>
+  </ion-item-group>
+  </form>
 
 
 </ion-content>

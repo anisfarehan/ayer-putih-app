@@ -13,7 +13,9 @@ export class GlobalService {
     baseUrl: "localhost:8484/Psm", //mexists:8238Gt@walm.cryptical.tech
     loginUrl: "/json/login",
     getCurrentUserUrl: '/json/getCurrentUser',
-    profileUpdateUrl: '/AppakaunServlet',
+    profileUpdateUrl: '/AppakaunServlet', //url utk update profileupdate amik dri user data ts. utk trik dri json
+    profileServletUrl: '/ProfileServlet',
+    pretasiServletUrl: '/AppviewresultServlet',
   };
 
   constructor(public storage:Storage, public http:Http, private alertCtrl:AlertController,
@@ -22,6 +24,8 @@ export class GlobalService {
     this.backend.loginUrl = this.backend.baseUrl + this.backend.loginUrl;
     this.backend.getCurrentUserUrl = this.backend.baseUrl + this.backend.getCurrentUserUrl;
     this.backend.profileUpdateUrl = this.backend.baseUrl + this.backend.profileUpdateUrl;
+    this.backend.profileServletUrl = this.backend.baseUrl + this.backend.profileServletUrl;
+    this.backend.pretasiServletUrl = this.backend.baseUrl + this.backend.pretasiServletUrl;
   }
 
   getStorage(key:string) {

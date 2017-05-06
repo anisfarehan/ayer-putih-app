@@ -56,24 +56,24 @@ export class UserData {
     refreshUserData() {
         return Observable.create((observer:any) => {
             // At this point make a request to your backend to make a real check!
-            var postData = ({
-                csrf_token: '',
-            });
+            /*var postData = ({
+             csrf_token: '',
+             });
 
-            this.http.post(this.globalService.backend.getCurrentUserUrl, postData)
-                .subscribe((responseData:any) => {
-                    var userData = responseData.json().user;
+             this.http.post(this.globalService.backend.getCurrentUserUrl, postData)
+             .subscribe((responseData:any) => {
+             var userData = responseData.json().user;
 
-                    //set the current user data from backend
-                    this.setUserData(userData);
-                    this.events.publish('user:refresh');
+             //set the current user data from backend
+             this.setUserData(userData);
+             this.events.publish('user:refresh');
 
-                    observer.next(true);
-                    observer.complete();
+             observer.next(true);
+             observer.complete();
 
-                }, (error:any) => {
-                    console.log(error);
-                });
+             }, (error:any) => {
+             console.log(error);
+             });*/
 
         });
     }
@@ -136,7 +136,7 @@ export class UserData {
 
             this.getID().then((userId:any)=> {
 
-                var postData = ({
+                var postData = ({ //data data n nama input kat html
                     user_id: userId,
                     pelajarnama: user.studentName,
                     kelas_id: user.kelas,
@@ -175,6 +175,65 @@ export class UserData {
                     }, (error:any) => {
                         console.log(error);
                     });
+            });
+
+        });
+    }
+
+    getPelajar(nric:any) { //view
+            return Observable.create((observer:any) => {
+                // At this point make a request to your backend to make a real check!
+                var postData = ({
+                    no_ic: nric
+                });
+
+                var headers = new Headers();
+                headers.append("Content-Type", 'application/json');
+                var requestoptions = new RequestOptions({
+                    method: RequestMethod.Post,
+                    url: this.globalService.backend.profileServletUrl,
+                    headers: headers,
+                    body: JSON.stringify(postData)
+                });
+
+                return this.http.request(new Request(requestoptions)).subscribe((responseData:any) => {
+                    console.log(responseData.json());
+
+                    setTimeout(()=> {
+                        observer.next(responseData.json());
+                        observer.complete();
+                    });
+                }, (error:any) => {
+                    console.log(error);
+                });
+
+            });
+    }
+    getPrestasi(noic:any) { //view
+        return Observable.create((observer:any) => {
+            // At this point make a request to your backend to make a real check!
+            var postData = ({
+                no_ic: noic
+            });
+
+            var headers = new Headers();
+            headers.append("Content-Type", 'application/json');
+            var requestoptions = new RequestOptions({
+                method: RequestMethod.Post,
+                url: this.globalService.backend.pretasiServletUrl,
+                headers: headers,
+                body: JSON.stringify(postData)
+            });
+
+            return this.http.request(new Request(requestoptions)).subscribe((responseData:any) => {
+                console.log(responseData.json());
+
+                setTimeout(()=> {
+                    observer.next(responseData.json());
+                    observer.complete();
+                });
+            }, (error:any) => {
+                console.log(error);
             });
 
         });
