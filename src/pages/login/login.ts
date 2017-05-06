@@ -54,7 +54,7 @@ export class LoginPage {
                 if (isValid) {
                     this.userData.getUserData().then((data:any)=> {
                         console.log(data);
-                        this.globalService.alert("Berjaya", "Selamat Datang" + data.name + "!").present();
+                        this.globalService.alert("Berjaya", "Selamat Datang " + data.number_ic + "!").present();
                         this.navCtrl.setRoot(HomePage);
                     });
                 } else {
