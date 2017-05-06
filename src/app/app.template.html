@@ -11,21 +11,37 @@
   <ion-content class="outer-content" >
 
      <ion-list>
+       <ion-list>
+         <ion-item>
+           <ion-avatar item-right>
+             <img src="assets/img/Picture1.gif">
+           </ion-avatar>
+           <h2>Farah Wahida Binti Muhammad Fakihi</h2>
+           <h3>Don't Know What To Do!</h3>
+           <p>I've had a pretty messed up day. If we just...</p>
+         </ion-item>
+       </ion-list>
 
-     <button ion-item menuClose (click)="openHome()" color="farehan">
-        <ion-icon item-left name="home"></ion-icon>
-        Menu Utama
-      </button>
-      <button ion-item menuClose (click)="openAkaun()" color="farehan">
-        <ion-icon item-left name="contact"></ion-icon>
+
+         <button ion-item menuClose (click)="openHome()" color="farehan">
+           <ion-icon item-right name="home"></ion-icon>
+           <h2>Menu Utama</h2>
+         </button>
+
+
+         <button ion-item menuClose (click)="openAkaun()" color="farehan">
+           <ion-icon item-right name="contact"></ion-icon>
         Maklumat Pelajar
-      </button>
-      <button ion-item menuClose (click)="openPrestasi()" color="farehan">
-        <ion-icon item-left name="school"></ion-icon>
+         </button>
+
+
+         <button ion-item menuClose (click)="openPrestasi()" color="farehan">
+        <ion-icon item-right name="school"></ion-icon>
         Penilaian Akademik
       </button>
+
       <button ion-item menuClose (click)="openAktivit()" color="farehan">
-      <ion-icon item-left name="body"></ion-icon>
+      <ion-icon item-right name="body"></ion-icon>
       Aktiviti Sekolah
     </button>
       <button ion-item menuClose (click)="openDetailcikgu()" color="farehan">
