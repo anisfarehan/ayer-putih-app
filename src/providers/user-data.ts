@@ -111,6 +111,11 @@ export class UserData {
             return data.username;
         });
     };
+    /*getkelas(){
+        return this.storage.get(this.USER_DATA).then((data)=>{
+            return data.
+        });
+    };*/
 
     getAvatar() {
         return this.storage.get(this.USER_DATA).then((data)=> {
@@ -138,7 +143,7 @@ export class UserData {
 
                 var postData = ({ //data data n nama input kat html
                     user_id: userId,
-                    pelajarnama: user.studentName,
+                    pelajarnama/*nama dalam table db*/: user.studentName/*nama dri file ts*/,
                     kelas_id: user.kelas,
                     no_ic: user.nric,
                     namaibu: user.motherName,

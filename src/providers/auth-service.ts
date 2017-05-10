@@ -57,7 +57,8 @@ export class AuthService {
 
               });
             }
-          }, (error:any) => {
+          },
+              (error:any) => {
             console.log(error);
           });
 

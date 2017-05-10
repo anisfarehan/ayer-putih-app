@@ -41,17 +41,17 @@ export class AkaunPage {
     }
 
     onUpdate() {
-        let loading = this.globalService.loading("Processing");
+        let loading = this.globalService.loading("Sedang Process");
         loading.present();
 
         this.userData.profileUpdate(this.user).subscribe((data:any)=> {
-            this.globalService.toast("Profile updated!").present();
+            this.globalService.toast("Kemaskini Akaun Berjaya!").present();
             this.userData.refreshUserData().subscribe((data:any)=> {
 
             });
         }, (error:any)=> {
             console.log(error);
-            this.globalService.toast("Opss! Something went wrong.").present();
+            this.globalService.toast("Pengisian data tidak lengkap.").present();
         });
 
         loading.dismiss();

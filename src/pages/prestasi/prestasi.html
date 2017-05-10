@@ -37,11 +37,18 @@
   <form #updateForm="ngForm" novalidate>
   <ion-item-group>
     <ion-item-divider color="light">Keputusan</ion-item-divider>
-    <ion-item>Bahasa Inggeris      90 A</ion-item>
-    <ion-item>Bahasa Melayu        88 A</ion-item>
-    <ion-item>Matematik            78 B</ion-item>
-    <ion-item>Science              90 A</ion-item>
-    <ion-item>Pendidikan Islam     90 A</ion-item>
+      <ion-input [(ngModel)]="user.studentName" name="studentName" type="text" #studentName="ngModel"
+                 spellcheck="false"
+                 autocapitalize="off" required></ion-input>
+      <ion-input [(ngModel)]="user.studentName" name="studentName" type="text" #studentName="ngModel"
+                 spellcheck="false"
+                 autocapitalize="off" required></ion-input>
+      <ion-input [(ngModel)]="user.studentName" name="studentName" type="text" #studentName="ngModel"
+                 spellcheck="false"
+                 autocapitalize="off" required></ion-input>
+      <ion-input [(ngModel)]="user.studentName" name="studentName" type="text" #studentName="ngModel"
+                 spellcheck="false"
+                 autocapitalize="off" required></ion-input>
   </ion-item-group>
   </form>
 

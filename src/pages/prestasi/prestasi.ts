@@ -31,9 +31,12 @@ export class PrestasiPage {
         console.log(data);
         this.user.studentName = data.pelajarnama;
         this.user.kelas = data.kelas_id;
-
-
-      });
+     });
+      //userData.getPrestasi(this.user1.noic).subscribe((data:any)=>{
+        //console.log(data);
+        //this.user1.id = data.id;
+        //this.user1.subjek/*nama declare dri atas tu*/ = data.subjek_id;/*nama yg post data kat user data*/
+      //})
     });
 
 
