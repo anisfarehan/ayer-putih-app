@@ -1,4 +1,5 @@
 import {NgModule, Component} from '@angular/core';
+import {SQLite} from 'ionic-native';
 
 import {IonicApp, IonicModule, NavController, NavParams} from 'ionic-angular';
 import {Storage} from '@ionic/storage';
@@ -12,6 +13,7 @@ import {AuthService} from '../providers/auth-service';
 import {ChannelData} from '../providers/channel-data';
 import {UserData} from '../providers/user-data';
 import {PushDataService} from '../providers/push-data-service';
+import {SQLiteService} from '../providers/sql-lite-service';
 
 import {CloudSettings, CloudModule, Auth} from '@ionic/cloud-angular';
 import {ContactPage} from "../pages/contact/contact";
@@ -113,7 +115,8 @@ const cloudSettings:CloudSettings = {
      TutorialPage,*/
 
   ],
-  providers: [GlobalService, AuthService, ChannelData, UserData, PushDataService, Storage]
+  providers: [GlobalService, AuthService, ChannelData, UserData, PushDataService,
+    SQLiteService, SQLite, Storage]
 })
 export class AppModule {
 

@@ -29,7 +29,7 @@ export class MyApp {
   @ViewChild(Nav) nav:Nav;
 
 
-  constructor(platform: Platform, public auth:Auth,
+  constructor(public auth:Auth,
               public platform:Platform,
               public alertCtrl:AlertController,
               public pushData:PushDataService) {
