@@ -1,9 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {Push, PushToken } from '@ionic/cloud-angular';
 
-import {Events, MenuController, Nav, Platform} from 'ionic-angular';
-
-import {Push as FCMPush, Splashscreen} from 'ionic-native';
+import {Push as FCMPush} from 'ionic-native';
 import {Storage} from '@ionic/storage';
 import {Events, MenuController, Nav, Platform, AlertController} from 'ionic-angular';
 

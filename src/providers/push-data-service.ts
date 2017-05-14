@@ -40,7 +40,7 @@ export class PushDataService {
   public updateGCMRegistrationId(registrationId?:any) {
     return Observable.create((observer:any) => {
 
-      this.userData.getUserId().then((user_id:any)=> {
+      this.userData.getID().then((user_id:any)=> {
         // At this point make a request to your backend to make a real check!
         var requestData = ({
           gcm_registration_id: registrationId,
@@ -62,41 +62,6 @@ export class PushDataService {
 
       });
 
-    });
-  }
-
-  /*
-   * for testing purposes
-   * */
-  getData() {
-    return Observable.create((observer:any) => {
-      this.userData.getPhoneNumber().then((data:any)=> {
-        /*
-         * template data
-         * */
-        var requescData = ({
-          primary_phone: data,
-        });
-        this.http.post(this.globalService.backend.getPushDataUrl, requescData)
-          .subscribe((responseData:any) => {
-            var data:any = /*JSON.stringify*/(responseData.json().data);
-            /*this.set(data).then(()=> {
-             observer.next(data);
-             observer.complete();
-             });*/
-            this.sqlService.insert('push', ['data', 'created_at'], [JSON.stringify(data), this.globalService.getLocalISOTimeString()]).then(()=> {
-              observer.next(data);
-              observer.complete();
-            });
-          }, (error:any) => {
-            observer.next(error);
-            observer.complete();
-            console.log(error);
-          });
-        /*
-         * template data
-         * */
-      });
     });
   }
 
