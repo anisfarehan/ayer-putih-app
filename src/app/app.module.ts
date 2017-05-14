@@ -11,6 +11,7 @@ import {GlobalService} from '../providers/global-service';
 import {AuthService} from '../providers/auth-service';
 import {ChannelData} from '../providers/channel-data';
 import {UserData} from '../providers/user-data';
+import {PushDataService} from '../providers/push-data-service';
 
 import {CloudSettings, CloudModule, Auth} from '@ionic/cloud-angular';
 import {ContactPage} from "../pages/contact/contact";
@@ -21,18 +22,18 @@ import {AktivitPage} from "../pages/aktivit/aktivit";
 import {DetailcikguPage} from "../pages/detailcikgu/detailcikgu";
 //import {WalmApp} from './app.component';
 /*
-import {AboutPage} from '../pages/about/about';
-import {PopoverPage} from '../pages/about-popover/about-popover';
+ import {AboutPage} from '../pages/about/about';
+ import {PopoverPage} from '../pages/about-popover/about-popover';
 
-import {MapPage} from '../pages/map/map';
-import {SchedulePage} from '../pages/schedule/schedule';
-import {ScheduleFilterPage} from '../pages/schedule-filter/schedule-filter';
-import {SessionDetailPage} from '../pages/session-detail/session-detail';
-import {SignupPage} from '../pages/signup/signup';
-import {SpeakerDetailPage} from '../pages/speaker-detail/speaker-detail';
-import {SpeakerListPage} from '../pages/speaker-list/speaker-list';
+ import {MapPage} from '../pages/map/map';
+ import {SchedulePage} from '../pages/schedule/schedule';
+ import {ScheduleFilterPage} from '../pages/schedule-filter/schedule-filter';
+ import {SessionDetailPage} from '../pages/session-detail/session-detail';
+ import {SignupPage} from '../pages/signup/signup';
+ import {SpeakerDetailPage} from '../pages/speaker-detail/speaker-detail';
+ import {SpeakerListPage} from '../pages/speaker-list/speaker-list';
 
-import {TutorialPage} from '../pages/tutorial/tutorial';*/
+ import {TutorialPage} from '../pages/tutorial/tutorial';*/
 
 
 const cloudSettings:CloudSettings = {
@@ -69,16 +70,16 @@ const cloudSettings:CloudSettings = {
     //WalmApp,
     /*AboutPage,
 
-    MapPage,
-    PopoverPage,
-    SchedulePage,
-    ScheduleFilterPage,
-    SessionDetailPage,
-    SignupPage,
-    SpeakerDetailPage,
-    SpeakerListPage,
+     MapPage,
+     PopoverPage,
+     SchedulePage,
+     ScheduleFilterPage,
+     SessionDetailPage,
+     SignupPage,
+     SpeakerDetailPage,
+     SpeakerListPage,
 
-    TutorialPage,*/
+     TutorialPage,*/
 
   ],
   imports: [
@@ -100,19 +101,19 @@ const cloudSettings:CloudSettings = {
     //WalmApp,
     /*AboutPage,
 
-    MapPage,
-    PopoverPage,
-    SchedulePage,
-    ScheduleFilterPage,
-    SessionDetailPage,
-    SignupPage,
-    SpeakerDetailPage,
-    SpeakerListPage,
+     MapPage,
+     PopoverPage,
+     SchedulePage,
+     ScheduleFilterPage,
+     SessionDetailPage,
+     SignupPage,
+     SpeakerDetailPage,
+     SpeakerListPage,
 
-    TutorialPage,*/
+     TutorialPage,*/
 
   ],
-  providers: [GlobalService, AuthService, ChannelData, UserData, Storage]
+  providers: [GlobalService, AuthService, ChannelData, UserData, PushDataService, Storage]
 })
 export class AppModule {
 
