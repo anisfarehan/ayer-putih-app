@@ -1,16 +1,16 @@
 import {Component, ViewChild} from '@angular/core';
-import {Push, PushToken } from '@ionic/cloud-angular';
+import {Push, PushToken} from '@ionic/cloud-angular';
 
 import {Push as FCMPush} from 'ionic-native';
 import {Storage} from '@ionic/storage';
 import {Events, MenuController, Nav, Platform, AlertController} from 'ionic-angular';
 
 
-import { StatusBar, Splashscreen } from 'ionic-native';
+import {StatusBar, Splashscreen} from 'ionic-native';
 
-import { HomePage } from '../pages/home/home';
-import { LoginPage } from '../pages/login/login';
-import { Auth } from '@ionic/cloud-angular';
+import {HomePage} from '../pages/home/home';
+import {LoginPage} from '../pages/login/login';
+import {Auth} from '@ionic/cloud-angular';
 import {AkaunPage} from '../pages/akaun/akaun';
 import {PrestasiPage} from "../pages/prestasi/prestasi";
 import {AktivitPage} from "../pages/aktivit/aktivit";
@@ -44,7 +44,7 @@ export class MyApp {
        * */
       this.initFCMPushNotification();
 
-      if(this.auth.isAuthenticated()) {
+      if (this.auth.isAuthenticated()) {
         this.rootPage = HomePage;
         this.rootPage = AkaunPage;
       } else {
@@ -52,22 +52,26 @@ export class MyApp {
       }
 
     });
-    }
+  }
 
 
   openAkaun() {
     this.nav.setRoot(AkaunPage);
   }
+
   openHome() {
     this.nav.setRoot(HomePage);
   }
+
   openPrestasi() {
     this.nav.setRoot(PrestasiPage);
   }
-  openAktivit(){
+
+  openAktivit() {
     this.nav.setRoot(AktivitPage);
   }
-  openDetailcikgu(){
+
+  openDetailcikgu() {
     this.nav.setRoot(DetailcikguPage)
   }
 
@@ -92,17 +96,17 @@ export class MyApp {
 
     push.on('registration', (responseData) => {
       //save device token into storage
-      this.pushData.setDeviceToken(responseData.registrationId);
-      // this.globalService.alert('Push Token', data.registrationId, data.registrationId).present();
-      console.log("device token ->", responseData.registrationId);
-      //TODO - send device token to server
-      //NOTE: send device token after login
-      this.pushData.updateGCMRegistrationId(responseData.registrationId).subscribe((success:any)=> {
-        console.log(success);
-      }, (error:any)=> {
-        console.log(error);
+      this.pushData.setDeviceToken(responseData.registrationId).then(()=> {
+        // this.globalService.alert('Push Token', data.registrationId, data.registrationId).present();
+        console.log("device token ->", responseData.registrationId);
+        //TODO - send device token to server
+        //NOTE: send device token after login
+        this.pushData.updateGCMRegistrationId(responseData.registrationId).subscribe((success:any)=> {
+          console.log(success);
+        }, (error:any)=> {
+          console.log(error);
+        });
       });
-
     });
     push.on('notification', (responseData) => {
       /*

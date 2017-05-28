@@ -22,7 +22,6 @@ import {PrestasiPage} from "../pages/prestasi/prestasi";
 import {MyApp} from './app.component';
 import {AktivitPage} from "../pages/aktivit/aktivit";
 import {DetailcikguPage} from "../pages/detailcikgu/detailcikgu";
-//import {WalmApp} from './app.component';
 /*
  import {AboutPage} from '../pages/about/about';
  import {PopoverPage} from '../pages/about-popover/about-popover';
@@ -43,7 +42,7 @@ const cloudSettings:CloudSettings = {
     'app_id': '71dc6e5b'
   },
   'push': {
-    'sender_id': '642527413379',
+    'sender_id': '216103551307',
     'pluginConfig': {
       'ios': {
         'badge': true,

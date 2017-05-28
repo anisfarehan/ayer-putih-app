@@ -27,7 +27,7 @@ export class PushDataService {
   }
 
   setDeviceToken(data:string) {
-    this.storage.set(this.PUSH_TOKEN, data);
+    return this.storage.set(this.PUSH_TOKEN, data);
   }
 
   getDeviceToken() {
@@ -44,11 +44,10 @@ export class PushDataService {
         // At this point make a request to your backend to make a real check!
         var requestData = ({
           gcm_registration_id: registrationId,
-          id: user_id
+          user_id: user_id
         });
 
-        this.globalService.backend.updateGcmIdUrl = this.globalService.backend.updateGcmIdUrl.replace(/\{\{id\}\}/gi, user_id);
-        this.http.post(this.globalService.backend.updateGcmIdUrl, requestData)
+        this.http.post(this.globalService.backend.updateGcmIdServletUrl, requestData)
           .subscribe((responseData:any) => {
             // var userData = responseData.json().user;
             observer.next(responseData);

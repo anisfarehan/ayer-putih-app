@@ -10,22 +10,24 @@ export class GlobalService {
   datePipeMy:DatePipe = new DatePipe('en-US');
   backend:any = {
     protocol: "http://",
-    baseUrl: "localhost:8484/Psm", //mexists:8238Gt@walm.cryptical.tech
-    loginUrl: "/json/login",
+    baseUrl: "8bb1de35.ngrok.io/Psm", //mexists:8238Gt@walm.cryptical.tech
+    loginServletUrl: "/LoginServlet",
     getCurrentUserUrl: '/json/getCurrentUser',
     profileUpdateUrl: '/AppakaunServlet', //url utk update profileupdate amik dri user data ts. utk trik dri json
     profileServletUrl: '/ProfileServlet',
     pretasiServletUrl: '/AppviewresultServlet',
+    updateGcmIdServletUrl: '/GCMSaveServlet',
   };
 
   constructor(public storage:Storage, public http:Http, private alertCtrl:AlertController,
               public toastCtrl:ToastController, public loadingCtrl:LoadingController) {
     this.backend.baseUrl = this.backend.protocol + this.backend.baseUrl;
-    this.backend.loginUrl = this.backend.baseUrl + this.backend.loginUrl;
+    this.backend.loginServletUrl = this.backend.baseUrl + this.backend.loginServletUrl;
     this.backend.getCurrentUserUrl = this.backend.baseUrl + this.backend.getCurrentUserUrl;
     this.backend.profileUpdateUrl = this.backend.baseUrl + this.backend.profileUpdateUrl;
     this.backend.profileServletUrl = this.backend.baseUrl + this.backend.profileServletUrl;
     this.backend.pretasiServletUrl = this.backend.baseUrl + this.backend.pretasiServletUrl;
+    this.backend.updateGcmIdServletUrl = this.backend.baseUrl + this.backend.updateGcmIdServletUrl;
   }
 
   getStorage(key:string) {

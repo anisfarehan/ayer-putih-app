@@ -29,7 +29,7 @@ export class AuthService {
         headers.append("Content-Type", 'application/json');
         var requestoptions = new RequestOptions({
           method: RequestMethod.Post,
-          url: "http://localhost:8484/Psm/LoginServlet",
+          url: this.globalService.backend.loginServletUrl,
           headers: headers,
           body: JSON.stringify(postData)
         });
