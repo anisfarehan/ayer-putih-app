@@ -10,7 +10,8 @@ export class GlobalService {
   datePipeMy:DatePipe = new DatePipe('en-US');
   backend:any = {
     protocol: "http://",
-    baseUrl: "8bb1de35.ngrok.io/Psm", //mexists:8238Gt@walm.cryptical.tech
+    baseUrl: "8024d8f4.ngrok.io/Psm", //mexists:8238Gt@walm.cryptical.tech
+
     loginServletUrl: "/LoginServlet",
     getCurrentUserUrl: '/json/getCurrentUser',
     profileUpdateUrl: '/AppakaunServlet', //url utk update profileupdate amik dri user data ts. utk trik dri json
